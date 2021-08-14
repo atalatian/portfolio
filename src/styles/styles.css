@@ -1,0 +1,129 @@
+:root {
+    --primaryBackground: #cf3476;
+    --primaryForeground: white;
+    --secondaryBackground: #34cf8d;
+    --secondaryForeground: #ff6060;
+    --thirdForeground: #d6d6d6;
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 200vh;
+}
+
+.photoFrame{
+    clip-path: polygon(33% 0, 73% 11%, 100% 83%, 27% 100%, 8% 62%);
+    width: 30.4vw;
+}
+
+.introduce{
+    padding-top: 15vw;
+    padding-bottom: 15vw;
+}
+
+sectionHeight{
+    height: 100vh;
+}
+
+sectionRight{
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20vw), 0 100%);
+}
+
+.primaryBackground{
+    background-color: var(--primaryBackground);
+}
+
+.primaryForeground{
+    color: var(--primaryForeground);
+}
+
+.thirdForeground{
+    color: var(--thirdForeground);
+}
+
+.secondaryBackground{
+    background-color: var(--secondaryBackground);
+}
+
+.backgroundTextWrap{
+    position: fixed;
+    opacity: 0.1;
+    color: white;
+}
+
+.backgroundText{
+    font-size: 33.4vw;
+    cursor: default;
+}
+
+.goUp{
+    position: relative;
+    z-index: 1;
+}
+
+
+.introducePrimaryText{
+    font-size: 4.5vw;
+}
+
+.introduceSecondaryText{
+    font-size: 2.81vw;
+}
+
+.scene{
+    transform-style: preserve-3d;
+    transform: perspective(200vw);
+    position: fixed;
+    width: 100%;
+    top: -24vw
+}
+
+
+.rect{
+    width: 93%;
+    box-sizing: border-box;
+    margin: auto;
+    font-size: 24vw;
+}
+
+.backgroundTextLayer1{
+    transform-style: preserve-3d;
+    transform: rotateX(45deg);
+}
+
+.backgroundTextLayer2{
+    transform-style: preserve-3d;
+    transform: rotateX(-90deg);
+}
+
+.first{
+    transform: rotateX(45deg) translateY(13vw) translateZ(5.5vw);
+    -webkit-text-fill-color: var(--primaryBackground); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 0.05vw;
+    -webkit-text-stroke-color: white;
+    background-color: var(--primaryBackground);
+}
+
+.second{
+    transform: rotateX(-45deg) translateY(-13vw) translateZ(5.5vw);
+    -webkit-text-fill-color: var(--primaryBackground); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 0.05vw;
+    -webkit-text-stroke-color: white;
+}
+
+
+.backgroundTextSpin{
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transform: rotateX(135deg);
+}
+
+.backgroundTextSpinBackwards{
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transform: rotateX(45deg);
+}
