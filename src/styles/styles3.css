@@ -1,0 +1,95 @@
+.section-3{
+    background-color: gray;
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+.section-4{
+    background-color: cornflowerblue;
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+
+.iconWrapper{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+#introduce{
+    position: relative;
+    z-index: 3;
+}
+
+.project-tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-tag{
+    width: 13rem;
+    text-align: center;
+    border-radius: 1px;
+}
+
+.project-tags-wrapper{
+    cursor: pointer;
+    position: relative;
+}
+
+.project-tags-wrapper::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: gray;
+    z-index: -1;
+    transition-property: width;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
+
+
+.tagBeforeHundredWidth::before{
+    width: 100% !important;
+}
+
+
+.project-cards{
+    min-width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+
+.project-card{
+    flex-grow: 1;
+    flex-basis: 33.33333%;
+    min-height: 33.333vh;
+    display: grid;
+    place-items: center;
+    transition-property: width;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.red{
+    background-color: red;
+}
+
+.violet{
+    background-color: violet;
+}
+
+.yellow{
+    background-color: yellow;
+}

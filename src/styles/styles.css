@@ -10,17 +10,36 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 200vh;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+.App{
+    overflow: hidden;
+}
+
+.parent{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    position: fixed;
 }
 
 .photoFrame{
     clip-path: polygon(33% 0, 73% 11%, 100% 83%, 27% 100%, 8% 62%);
     width: 30.4vw;
+    position: relative;
 }
 
 .introduce{
-    padding-top: 15vw;
-    padding-bottom: 15vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 sectionHeight{
@@ -63,29 +82,49 @@ sectionRight{
     z-index: 1;
 }
 
-
-.introducePrimaryText{
-    font-size: 4.5vw;
+@keyframes introduceTextAnime {
+    0%{
+        line-height: 1vw;
+    }
+    100%{
+        line-height: 16vw;
+    }
 }
+
+
+.introduceText{
+    font-size: 16vw;
+    line-height: 15vw;
+    color: white;
+    width: fit-content;
+    font-weight: 700;
+    position: relative;
+    z-index: 3;
+}
+
 
 .introduceSecondaryText{
     font-size: 2.81vw;
 }
 
+
 .scene{
     transform-style: preserve-3d;
-    transform: perspective(200vw);
+    transform: perspective(10000vw);
     position: fixed;
     width: 100%;
-    top: -24vw
+    top: -24vw;
+    text-align: center;
+    z-index: -1;
 }
 
 
 .rect{
-    width: 93%;
+    width: 100%;
     box-sizing: border-box;
-    margin: auto;
-    font-size: 24vw;
+    font-size: 25vw;
+    opacity: 0.3;
+    color: darkgreen;
 }
 
 .backgroundTextLayer1{
@@ -99,18 +138,11 @@ sectionRight{
 }
 
 .first{
-    transform: rotateX(45deg) translateY(13vw) translateZ(5.5vw);
-    -webkit-text-fill-color: var(--primaryBackground); /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 0.05vw;
-    -webkit-text-stroke-color: white;
-    background-color: var(--primaryBackground);
+    transform: rotateX(45deg) translateY(13.32vw) translateZ(5.5vw);
 }
 
 .second{
-    transform: rotateX(-45deg) translateY(-13vw) translateZ(5.5vw);
-    -webkit-text-fill-color: var(--primaryBackground); /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 0.05vw;
-    -webkit-text-stroke-color: white;
+    transform: rotateX(-45deg) translateY(-13.32vw) translateZ(5.5vw);
 }
 
 
@@ -127,3 +159,4 @@ sectionRight{
     transition-timing-function: ease-in-out;
     transform: rotateX(45deg);
 }
+

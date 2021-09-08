@@ -1,20 +1,20 @@
 import './App.css';
 import Introduce from "./components/introduce";
 import '../src/styles/styles.css';
-import New from "./components/new";
-import New2 from "./components/new2";
-import Welcome from "./components/welcome";
+import '../src/styles/styles2.css';
+import '../src/styles/styles3.css';
+import '../src/styles/styles4.css';
 import {useState, useEffect} from "react";
-import Navbar from "./components/navbar";
 import BackgroundText from "./components/backgroundText";
-import Logo from "./components/Logo";
+import Projects from "./components/projects";
 
 function App() {
 
     return (
-        <div className="App">
+        <div id='app' className='App'>
             <BackgroundText/>
             <Introduce/>
+            <Projects/>
         </div>
     );
 }

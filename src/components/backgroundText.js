@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react"
-import { makeStyles } from '@material-ui/styles';
 
 
 
 
 export default function BackgroundText(){
-
     const [rotateClass, setRotateClass] = useState('');
 
+
     useEffect(() => {
-        let sectionHeight1 = document.getElementById('introduce').clientHeight;
         window.onscroll = function (){
-            if (window.pageYOffset >= sectionHeight1){
+            let introduce = document.getElementById('introduce');
+            let introduceHeight = introduce.offsetTop + introduce.offsetHeight;
+            if (window.scrollY > introduceHeight){
                 setRotateClass('backgroundTextSpin');
-            }else if (window.pageYOffset <= sectionHeight1){
+            }else if (window.scrollY <= introduceHeight){
                 setRotateClass('backgroundTextSpinBackwards')
             }
         }
@@ -26,7 +26,7 @@ export default function BackgroundText(){
                 <div className={"backgroundTextLayer1 " + rotateClass}>
                     <div className='backgroundTextLayer2'>
                         <div className='rect first'>About</div>
-                        <div className='rect second'>Portfolio</div>
+                        <div className='rect second'>Projects</div>
                     </div>
                 </div>
             </div>
