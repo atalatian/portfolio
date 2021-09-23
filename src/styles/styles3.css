@@ -1,37 +1,22 @@
-.section-3{
-    background-color: gray;
-    min-width: 100%;
-    min-height: 100vh;
-}
-
-.section-4{
-    background-color: cornflowerblue;
-    min-width: 100%;
-    min-height: 100vh;
-}
-
-
-.iconWrapper{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-
-#introduce{
-    position: relative;
-    z-index: 3;
-}
-
 .project-tags{
+    position: fixed;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    z-index: 2;
+    bottom: 0;
+    background-color: white;
+    transition-property: bottom;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
 }
 
 .project-tag{
-    width: 13rem;
+    width: 8em;
     text-align: center;
-    border-radius: 1px;
+    overflow: hidden;
 }
 
 .project-tags-wrapper{
@@ -58,38 +43,26 @@
     width: 100% !important;
 }
 
-
-.project-cards{
-    min-width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-
-.project-card{
-    flex-grow: 1;
-    flex-basis: 33.33333%;
-    min-height: 33.333vh;
+.project-tags-circle{
+    position: absolute;
     display: grid;
     place-items: center;
-    transition-property: width;
+    top: -2rem;
+    background-color: white;
+    transition-property: transform;
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
 }
 
-.blue{
-    background-color: blue;
+.project-tags-circle.up{
+    transform: rotateZ(180deg);
 }
 
-.red{
-    background-color: red;
+.project-tags-circle.down{
+    transform: rotateZ(0deg);
 }
 
-.violet{
-    background-color: violet;
-}
-
-.yellow{
-    background-color: yellow;
+.project-tags-circle button{
+    min-width: 3rem;
+    min-height: 3rem;
 }

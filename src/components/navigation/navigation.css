@@ -1,0 +1,23 @@
+.navigation{
+    z-index: 10;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 1) !important;
+}
+
+
+.navigation:hover{
+    cursor: grab;
+}
+
+.navigation a:hover{
+    color: #cf3476;
+}
+
+
+.navigation:active{
+    cursor: grabbing;
+}
+
+.menuIcon{
+    cursor: pointer;
+}

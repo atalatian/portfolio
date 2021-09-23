@@ -1,12 +1,3 @@
-:root {
-    --primaryBackground: #cf3476;
-    --primaryForeground: white;
-    --secondaryBackground: #34cf8d;
-    --secondaryForeground: #ff6060;
-    --thirdForeground: #d6d6d6;
-}
-
-
 html, body {
     margin: 0;
     padding: 0;
@@ -18,53 +9,7 @@ html, body {
     overflow: hidden;
 }
 
-.parent{
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    position: fixed;
-}
 
-.photoFrame{
-    clip-path: polygon(33% 0, 73% 11%, 100% 83%, 27% 100%, 8% 62%);
-    width: 30.4vw;
-    position: relative;
-}
-
-.introduce{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-evenly;
-}
-
-sectionHeight{
-    height: 100vh;
-}
-
-sectionRight{
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20vw), 0 100%);
-}
-
-.primaryBackground{
-    background-color: var(--primaryBackground);
-}
-
-.primaryForeground{
-    color: var(--primaryForeground);
-}
-
-.thirdForeground{
-    color: var(--thirdForeground);
-}
-
-.secondaryBackground{
-    background-color: var(--secondaryBackground);
-}
 
 .backgroundTextWrap{
     position: fixed;
@@ -75,36 +20,6 @@ sectionRight{
 .backgroundText{
     font-size: 33.4vw;
     cursor: default;
-}
-
-.goUp{
-    position: relative;
-    z-index: 1;
-}
-
-@keyframes introduceTextAnime {
-    0%{
-        line-height: 1vw;
-    }
-    100%{
-        line-height: 16vw;
-    }
-}
-
-
-.introduceText{
-    font-size: 16vw;
-    line-height: 15vw;
-    color: white;
-    width: fit-content;
-    font-weight: 700;
-    position: relative;
-    z-index: 3;
-}
-
-
-.introduceSecondaryText{
-    font-size: 2.81vw;
 }
 
 

@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react"
 
 
 
-export default function BackgroundText(){
+export default function BackgroundText(props){
     const [rotateClass, setRotateClass] = useState('');
 
 
     useEffect(() => {
         window.onscroll = function (){
-            let introduce = document.getElementById('introduce');
+            let introduce = props.introduceRef;
             let introduceHeight = introduce.offsetTop + introduce.offsetHeight;
             if (window.scrollY > introduceHeight){
                 setRotateClass('backgroundTextSpin');
