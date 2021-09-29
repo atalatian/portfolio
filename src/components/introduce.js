@@ -5,10 +5,6 @@ import { Squircle } from 'react-ios-corners';
 import Typist from 'react-typist';
 import "react-typist/dist/Typist.css";
 
-
-
-
-
 const useStyles = makeStyles({
     introduce: {
         backgroundColor: '#cf3476',
@@ -23,6 +19,14 @@ const useStyles = makeStyles({
     fullStackText: {
         color: `#72deb0`,
     },
+    circle: {
+        width: `${1}rem`,
+        height: `${1}rem`,
+        backgroundColor: `white`,
+    },
+    title: {
+        color: "white",
+    }
 });
 
 
@@ -34,7 +38,7 @@ export default function Introduce(props){
 
     return(
         <React.Fragment>
-            <div className={`container-fluid`}>
+            <div id={`about`} className={``}>
                 <div className={`d-flex justify-content-center ` +
                 `align-items-center flex-column flex-xl-row ${classes.section1} text-center`}>
                     <div className={`m-3 m-xl-5 mw-100 flex-shrink-0`}>
@@ -42,10 +46,9 @@ export default function Introduce(props){
                             <img className={`img-fluid`} src={CoralPinkWhite} alt="my_image"/>
                         </Squircle>
                     </div>
-
                     <div className={`m-3 m-xl-5 mw-100`}>
-                        <p className={`display-1`}>I'm Amir Hossein Talatian</p>
-                        <div className={`display-4 mb-3 ${classes.fullStackText}`}>
+                        <p className={`display-3`}>I'm Amir Hossein Talatian</p>
+                        <div className={`display-6 mb-3 ${classes.fullStackText}`}>
                             <Typist>
                                 I'm a Full-Stack developer
                             </Typist>

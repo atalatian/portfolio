@@ -2,14 +2,13 @@ import React, {useEffect, useState} from "react";
 import './navigation.css';
 import { makeStyles } from '@material-ui/styles';
 import Paper from '@mui/material/Paper';
-import MenuIcon from "@mui/icons-material/Menu";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import {MorphIcon, NavButton} from "react-svg-buttons";
+import {NavButton} from "react-svg-buttons";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Draggable from 'react-draggable';
+import separateWords from "../separateWords";
+import capitalizeEachWord from "../capitalizeEachWord";
 
 
 const useStyles = makeStyles({
@@ -32,7 +31,24 @@ const useStyles = makeStyles({
     color: {
         color: `black`,
     },
+
+    number: {
+        overflow: "hidden",
+        zIndex: -1,
+    }
 });
+
+const navItems = [
+    {title: 'about', address: '#about', icon: null},
+    {title: 'skills', address: '#skills', icon: null},
+    {title: 'projects', address: '#projects', icon: null},
+    {title: 'instagram', address: 'https://www.instagram.com/ah_talatian/',
+        icon: <InstagramIcon sx={{fontSize: 30}}/>},
+    {title: 'github', address: 'https://github.com/atalatian',
+        icon: <GitHubIcon sx={{fontSize: 30}}/>},
+    {title: 'linkedin', address: 'https://www.linkedin.com/in/amir-hossein-talatian-b7a05a190/',
+        icon: <LinkedInIcon sx={{fontSize: 30}}/>},
+]
 
 
 export default function Navigation() {
@@ -72,49 +88,43 @@ export default function Navigation() {
         setOpen(!open)
     }
 
+    const renderNavItems = () => {
+        return navItems.map((item)=>{
+            let child = (item.icon ? item.icon : capitalizeEachWord(separateWords(item.title)));
+            let target = (item.icon ? `_blank` : `_self`);
+            return(
+                <li className={`nav-item p-${minItemPadding} p-xl-${itemPadding} d-flex 
+                    align-items-center justify-content-center`}>
+                    <a className={`nav-link p-0 ${classes.color}`} target={target}
+                       href={`${item.address}`}>{child}</a>
+                </li>
+            );
+        })
+    }
+
     return (
         <React.Fragment>
-            <Draggable>
-                <Paper elevation={10} className={`position-fixed m-3 navigation`}>
-                    <nav className="d-flex p-0 m-0 ">
-                        <ul className="d-flex p-0 m-0 flex-column flex-xl-row
-                     justify-content-start align-items-center">
-                            <li className={`nav-item p-${minItemPadding} p-xl-${minItemPadding} d-flex 
-                        align-items-center justify-content-center`}>
-                                <div className={`menuIcon`} onClick={handleMenuClick}>
-                                    <NavButton direction={direction} opened={false}/>
-                                </div>
-                            </li>
-                            <div className={`d-flex flex-column flex-xl-row
-                         overflow-hidden display-6 fs-3 ${sizingClass}`}>
-                                <li className={`nav-item p-${minItemPadding} p-xl-${itemPadding} d-flex 
-                        align-items-center justify-content-center`}>
-                                    <a className={`nav-link p-0 ${classes.color}`} href="#">About</a>
-                                </li>
-                                <li className={`nav-item p-${minItemPadding} p-xl-${itemPadding} d-flex 
-                        align-items-center justify-content-center`}>
-                                    <a className={`nav-link p-0 ${classes.color}`} href="#">Projects</a>
-                                </li>
-                                <li className={`nav-item p-${minItemPadding} p-xl-${itemPadding} d-flex 
-                        align-items-center justify-content-center`}>
-                                    <a className={`nav-link p-0 ${classes.color}`}
-                                       href="#"><InstagramIcon sx={{fontSize: 30}}/></a>
-                                </li>
-                                <li className={`nav-item p-${minItemPadding} p-xl-${itemPadding} d-flex 
-                        align-items-center justify-content-center`}>
-                                    <a className={`nav-link p-0 ${classes.color}`}
-                                       href="#"><GitHubIcon sx={{fontSize: 30}}/></a>
-                                </li>
-                                <li className={`nav-item p-${minItemPadding} p-xl-${itemPadding} d-flex 
-                        align-items-center justify-content-center`}>
-                                    <a className={`nav-link p-0 ${classes.color}`}
-                                       href="#"><LinkedInIcon sx={{fontSize: 30}}/></a>
-                                </li>
+            <Paper elevation={10} className={`position-fixed m-3 navigation`}>
+                <nav className="d-flex p-0 m-0 ">
+                    <ul className="d-flex p-0 m-0 flex-column flex-xl-row
+             justify-content-start align-items-center">
+                        <li className={`nav-item p-${minItemPadding} p-xl-${minItemPadding} d-flex 
+                align-items-center justify-content-center`}>
+                            <div className={`menuIcon`} onClick={handleMenuClick}>
+                                <NavButton direction={direction} opened={false}/>
                             </div>
-                        </ul>
-                    </nav>
-                </Paper>
-            </Draggable>
+                        </li>
+                        <div className={`d-flex flex-column flex-xl-row
+                 overflow-hidden display-6 fs-3 ${sizingClass}`}>
+                            {renderNavItems()}
+                            <li className={`nav-item p-${minItemPadding} p-xl-${itemPadding} d-flex 
+                    align-items-center justify-content-center display-6 fs-4`}>
+                                <a className={`nav-link p-0 ${classes.color}`} href={`#`}>FA</a>
+                            </li>
+                        </div>
+                    </ul>
+                </nav>
+            </Paper>
         </React.Fragment>
     );
 }

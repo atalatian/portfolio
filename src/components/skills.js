@@ -45,7 +45,7 @@ export default function Skills(){
     const classes = useStyles();
 
     return(
-        <div className={`container-fluid`}>
+        <div id={`skills`} className={``}>
             <div className={`d-flex flex-wrap align-items-center justify-content-center`}>
                 {
                     skillsFrontEnd.map((skill)=>{

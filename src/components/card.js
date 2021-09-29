@@ -11,31 +11,49 @@ import { createTheme, ThemeProvider, } from '@mui/material/styles';
 const useStyles = makeStyles({
 
     images: {
-        width: `${500}px`,
+        width: `${43}rem`,
     },
 
     left: {
         left: `${10}px`,
-        zIndex: 2,
     },
 
     right: {
         right: `${10}px`,
-        zIndex: 1,
     },
 
     top: {
         top: `${10}px`,
-        zIndex: 2,
     },
 
     bottom: {
         bottom: `${10}px`,
+    },
+
+    zIndex1: {
         zIndex: 1,
+    },
+
+    zIndex2: {
+        zIndex: 2,
     },
 
     paper: {
         overflow: `hidden`,
+    },
+
+    cardText: {
+        maxWidth: `${10}rem`,
+    },
+
+    cardTextMobile: {
+        maxWidth: `${40}rem`,
+    },
+
+    aHover: {
+        "&:hover":{
+            color: `white`,
+        },
     }
 });
 
@@ -49,45 +67,85 @@ const buttonTheme = createTheme({
 
 export default function Card(props){
     const classes = useStyles();
-    const matches = useMediaQuery('(min-width:992px)');
+    const matches = useMediaQuery('(min-width:1200px)');
+
+    const handleClass = (type) => {
+        switch (type){
+            case 'lt':
+                if (matches){
+                    if (props.rtl){
+                        return `${classes.right} ${classes.zIndex2}`;
+                    }else {
+                        return `${classes.left} ${classes.zIndex2}`;
+                    }
+                }else {
+                    if (props.rtl){
+                        return `${classes.bottom} ${classes.zIndex2}`;
+                    }else {
+                        return `${classes.top} ${classes.zIndex2}`;
+                    }
+                }
+            case 'rb':
+                if (matches){
+                    if (props.rtl){
+                        return `${classes.left} ${classes.zIndex1}`;
+                    }else {
+                        return `${classes.right} ${classes.zIndex1}`;
+                    }
+                }else {
+                    if (props.rtl){
+                        return `${classes.top} ${classes.zIndex1}`;
+                    }else {
+                        return `${classes.bottom} ${classes.zIndex1}`;
+                    }
+                }
+        }
+    }
 
     return(
-        <div className={`d-flex flex-column flex-lg-row mw-100 align-items-center m-5`}>
+        <div className={`d-flex flex-column ${props.rtl ? 'flex-xl-row-reverse' : 'flex-xl-row'} 
+        mw-100 align-items-center mt-5 mb-5`}>
             <div className={`flex-shrink-0 mw-100 
-            position-relative ${matches ? classes.left : classes.top} ${classes.images}`}>
-                <Paper elevation={6} className={`overflow-hidden border`}>
+            position-relative ${handleClass('lt')} ${classes.images}`}>
+                <Paper elevation={6} className={`overflow-hidden border mw-100`}>
                     {props.carousel}
                 </Paper>
             </div>
-            <div className={`position-relative mw-100 ${matches ? classes.right : classes.bottom}`}>
+            <div className={`position-relative mw-100 ${handleClass('rb')}`}>
                 <Paper elevation={3} className={`p-5`}>
                     <div>
-                        <h1 className={`display-6 fs-1`}>{props.title}</h1>
+                        <h1 className={`display-6 fs-2`}>{props.title}</h1>
                     </div>
-                    <div className={`m-2 m-sm-3`}>
+                    <div className={`m-1 m-sm-2 ${matches ? classes.cardText : classes.cardTextMobile}`}>
                         {
                             props.descriptions.map((description)=>{
                                 return(
-                                    <p className={`display-6 fs-4 lh-lg`}>
-                                        <mark>
+                                    <React.Fragment>
+                                        <p className={`display-6 fs-5 p-0 m-0`}>
                                             {description}
-                                        </mark><br/>
-                                    </p>
+                                        </p><br/>
+                                    </React.Fragment>
                                 );
                             })
                         }
                     </div>
                     <div className={`d-flex flex-column flex-sm-row`}>
-                        <div className={`m-2 m-sm-3`}>
+                        <div className={`m-1 m-sm-2`}>
                             <ThemeProvider theme={buttonTheme}>
-                                <Button variant="contained" endIcon={<LaunchIcon/>}>
+                                <Button className={`${classes.aHover}`}
+                                        href={props.liveLinks[props.index]}
+                                        target={`_blank`}
+                                        variant="contained" endIcon={<LaunchIcon/>}>
                                     Live
                                 </Button>
                             </ThemeProvider>
                         </div>
-                        <div className={`m-2 m-sm-3`}>
+                        <div className={`m-1 m-sm-2`}>
                             <ThemeProvider theme={buttonTheme}>
-                                <Button variant="contained" endIcon={<GitHubIcon/>}>
+                                <Button className={`${classes.aHover}`}
+                                        href={props.githubLinks[props.index]}
+                                        target={`_blank`}
+                                        variant="contained" endIcon={<GitHubIcon/>}>
                                     Github
                                 </Button>
                             </ThemeProvider>

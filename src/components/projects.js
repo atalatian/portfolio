@@ -14,7 +14,6 @@ import know4 from '../images/know/know4.png';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { makeStyles } from '@material-ui/core/styles';
-import createNewState from "./createNewState";
 import TextField from '@material-ui/core/TextField';
 import capitalizeEachWord from "./capitalizeEachWord";
 import separateWords from "./separateWords";
@@ -99,8 +98,20 @@ const useStyles = makeStyles((theme) => ({
 
     autoComplete: {
         width: `${500}px`
-    }
+    },
 }));
+
+const liveLinks = [
+    'https://atalatian-social-media.herokuapp.com/logIn/',
+    'https://atalatian.github.io/healthcare/#/',
+    'https://atalatian.github.io/know/#/',
+]
+
+const githubLinks = [
+    'https://github.com/atalatian/socialMedia',
+    'https://github.com/atalatian/healthcare',
+    'https://github.com/atalatian/know',
+]
 
 
 export default function Projects(props){
@@ -160,7 +171,12 @@ export default function Projects(props){
                             </Carousel>
                         }
                               title={capitalizeEachWord(separateWords(project.name))}
-                              descriptions={project.descriptions}/>
+                              descriptions={project.descriptions}
+                              rtl={false}
+                              index={index}
+                              liveLinks={liveLinks}
+                              githubLinks={githubLinks}
+                        />
                     );
                 }
                 return null;
@@ -207,10 +223,10 @@ export default function Projects(props){
 
     return(
         <React.Fragment>
-            <div className={`container-fluid`}>
+            <div id={`projects`} className={`mw-100`}>
                 <div className={`d-flex align-items-start justify-content-center`}>
                     <div className={`d-flex flex-wrap align-items-center
-                     justify-content-center justify-content-lg-start mw-100`}>
+                     justify-content-center mw-100`}>
                         {/*
                             <div className={`m-3 m-lg-5 ${classes.autoComplete}`}>
                                 {renderSearch()}
