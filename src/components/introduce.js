@@ -1,9 +1,11 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import CoralPinkWhite from '../images/coral-pink-white.png'
 import { makeStyles } from '@material-ui/styles';
 import { Squircle } from 'react-ios-corners';
 import Typist from 'react-typist';
 import "react-typist/dist/Typist.css";
+import {Box} from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const useStyles = makeStyles({
     introduce: {
@@ -35,15 +37,28 @@ const useStyles = makeStyles({
 
 export default function Introduce(props){
     const classes = useStyles();
+    const match = useMediaQuery('(max-width:500px)');
+    const [width, setWidth] = useState('433');
+
+    useEffect(()=>{
+        setWidth('433')
+
+        if (match){
+            setWidth('auto');
+        }
+    },[match])
+
 
     return(
         <React.Fragment>
             <div id={`about`} className={``}>
                 <div className={`d-flex justify-content-center ` +
                 `align-items-center flex-column flex-xl-row ${classes.section1} text-center`}>
-                    <div className={`m-3 m-xl-5 mw-100 flex-shrink-0`}>
+                    <div className={`m-3 m-xl-5 mw-100`}>
                         <Squircle>
-                            <img className={`img-fluid`} src={CoralPinkWhite} alt="my_image"/>
+                            <Box width={width} height={`auto`}>
+                                <img className={`img-fluid`} src={CoralPinkWhite} alt="my_image"/>
+                            </Box>
                         </Squircle>
                     </div>
                     <div className={`m-3 m-xl-5 mw-100`}>
