@@ -38,10 +38,10 @@ const useStyles = makeStyles({
 export default function Introduce(props){
     const classes = useStyles();
     const match = useMediaQuery('(max-width:500px)');
-    const [width, setWidth] = useState('433');
+    const [width, setWidth] = useState('433px');
 
     useEffect(()=>{
-        setWidth('433')
+        setWidth('433px')
 
         if (match){
             setWidth('auto');
